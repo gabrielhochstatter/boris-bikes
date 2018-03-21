@@ -18,6 +18,11 @@ describe 'DockingStation' do
       expect(DockingStation.new.bikerack).to be_empty
     end
 
+    it 'sets the default capacity when not called' do
+      expect(DockingStation.new.capacity).to eq DockingStation::DEFAULT_CAPACITY
+      #default capacity predefined so scope operator (::) called without creating new instance of class, whereas for capacity variable new instance of the class needs to be created first
+    end
+
     describe '#release_bike' do
       it 'raises error when no bikes' do
         expect { DockingStation.new.release_bike }.to raise_error 'No bikes available'
@@ -37,6 +42,8 @@ describe 'DockingStation' do
         #Bike.new called for new bike object passed in 19 times
         expect { test_station.dock(test_bike) }.to raise_error 'Station is full'
       end
+
+    
 
     end
 
