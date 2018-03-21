@@ -34,6 +34,7 @@ describe 'DockingStation' do
         test_station = DockingStation.new(Bike.new)
         test_bike = Bike.new
         19.times do test_station.dock(Bike.new) end
+        #Bike.new called for new bike object passed in 19 times
         expect { test_station.dock(test_bike) }.to raise_error 'Station is full'
       end
 

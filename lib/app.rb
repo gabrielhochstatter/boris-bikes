@@ -1,13 +1,23 @@
+
 class DockingStation
 
+    DEFAULT_CAPACITY = 20
     attr_reader :bikerack
-
-
-    def initialize(bike = nil)
-
+    def initialize(bike = nil, capacity = DEFAULT_CAPACITY)
       @bikerack = []
       deposit_bike(bike) if bike
+      @capacity = capacity
+    end
 
+    def release_bike
+      raise "No bikes available" if bikerack_empty?
+      @bikerack.pop
+    end
+
+    def dock(bike)
+      raise "Station is full" if bikerack_full?
+      deposit_bike(bike)
+      return bike
     end
 
     def release_bike
@@ -25,7 +35,7 @@ class DockingStation
 
 
     def bikerack_full?
-      @bikerack.size >= 20
+      @bikerack.size >= @capacity
     end
 
     def bikerack_empty?
