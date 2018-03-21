@@ -11,8 +11,11 @@ class DockingStation
     end
 
     def release_bike
-      raise "No bikes available" if bikerack_empty?
-      @bikerack.pop
+      raise "No bikes available" if bikerack_empty? || all_broken?
+      w_index = @bikerack.index {|bike| bike.working}
+      w_bike = @bikerack[w_index]
+      @bikerack.delete_at(w_index)
+      w_bike
     end
 
     def dock(bike, broken=false)
@@ -31,6 +34,10 @@ class DockingStation
 
     def bikerack_empty?
       @bikerack.empty?
+    end
+
+    def all_broken?
+      !@bikerack.any? {|bike| bike.working}
     end
 
     def deposit_bike(bike)

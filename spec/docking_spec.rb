@@ -28,9 +28,26 @@ describe 'DockingStation' do
         expect { DockingStation.new.release_bike }.to raise_error 'No bikes available'
       end
 
+      it "raises error when all the bikes are broken" do
+        test_station = DockingStation.new
+        test_station.dock(Bike.new, true)
+        expect {test_station.release_bike}.to raise_error "No bikes available"
+      end
+
       it "returns last bike if there are any in the station" do
         test_bike = Bike.new
         expect(DockingStation.new(test_bike).release_bike).to eq test_bike
+      end
+
+      it "returned bike is working (== true)" do
+        broken_bike = Bike.new
+        working_bike = Bike.new
+        test_station = DockingStation.new
+
+        test_station.dock(working_bike)
+        test_station.dock(broken_bike, true)
+        released_bike = test_station.release_bike
+        expect(released_bike.working).to eq true
       end
     end
 
@@ -42,6 +59,8 @@ describe 'DockingStation' do
         #Bike.new called for new bike object passed in 19 times
         expect { test_station.dock(test_bike) }.to raise_error 'Station is full'
       end
+
+
 
     
 
