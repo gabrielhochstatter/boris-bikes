@@ -15,19 +15,9 @@ class DockingStation
       @bikerack.pop
     end
 
-    def dock(bike)
+    def dock(bike, broken=false)
       raise "Station is full" if bikerack_full?
-      deposit_bike(bike)
-      return bike
-    end
-
-    def release_bike
-      raise "No bikes available" if bikerack_empty?
-      @bikerack.pop
-    end
-
-    def dock(bike)
-      raise "Station is full" if bikerack_full?
+      bike.working = false if broken
       deposit_bike(bike)
       return bike
     end
