@@ -50,6 +50,8 @@ class DockingStation
 end
 
 class Bike
-    def working?
+    attr_accessor :working
+    def initialize
+      @working = true
     end
 end
