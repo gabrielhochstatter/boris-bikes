@@ -13,7 +13,8 @@ class Van
   end
 
   def deliver_bikes(garage)
-
+    @inventory.each { |bike| garage.workshop << bike }
+    @inventory.clear
   end
 
   def collect_bikes(garage)
@@ -36,10 +37,10 @@ Van methods/actions
     store them in Van DONE
     remove broken bikes from DockingStation's bikerack DONE
 
-deliver broken bikes to Garages => deliver_bikes(Garage to deliver to)
-    argument is the garage to deliver to
-    remove the bikes from Van
-    add them to Garage's inventory
+[FINISHED] deliver broken bikes to Garages => deliver_bikes(Garage to deliver to)
+    argument is the garage to deliver to DONE
+    remove the bikes from Van DONE
+    add them to Garage's workshop DONE
 
 collect fixed bikes => collect_bikes(Garage to collect from)
     add only the fixed bikes to Van's inventory
