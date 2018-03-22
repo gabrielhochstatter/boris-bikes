@@ -16,9 +16,9 @@ class DockingStation
       @bikerack.delete_at(w_index)
     end
 
-    def dock(bike, broken=false)
+    def dock(bike)
       raise "Station is full" if bikerack_full?
-      bike.working = false if broken
+
       deposit_bike(bike)
       return bike
     end
@@ -48,5 +48,13 @@ class Bike
     attr_accessor :working
     def initialize
       @working = true
+    end
+
+    def working?
+      @working
+    end
+
+    def report_broken
+      @working = false
     end
 end
