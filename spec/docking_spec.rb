@@ -1,7 +1,7 @@
 require 'app'
 
-describe 'DockingStation' do
-
+describe DockingStation do
+    let(:station) { described_class.new }
     let(:bike) { double :bike }
 
     it 'responds to release_bike' do
@@ -46,7 +46,8 @@ describe 'DockingStation' do
         allow(bike).to receive(:report_broken).and_return(true)
         allow(bike).to receive(:working).and_return(true)
         test_bike = bike
-        expect(DockingStation.new(test_bike).release_bike).to eq test_bike
+        station.bikerack << test_bike
+        expect(station.release_bike).to eq test_bike
       end
 
       it "returned bike is working" do
@@ -66,9 +67,9 @@ describe 'DockingStation' do
 
     describe '#dock' do
       it 'raises error when someone tries to dock a bike at a full station (20 bikes)' do
-        test_station = DockingStation.new(double(:bike))
+        test_station = DockingStation.new
         test_bike = double(:bike)
-        19.times do test_station.dock(double(:bike)) end
+        20.times do test_station.dock(double(:bike)) end
         #Bike.new called for new bike object passed in 19 times
         expect { test_station.dock(test_bike) }.to raise_error 'Station is full'
       end

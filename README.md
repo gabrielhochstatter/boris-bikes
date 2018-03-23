@@ -29,8 +29,9 @@ Bikes can be delivered to a Garage instance using the #deliver_bikes method pass
 #### .collect_bikes(garage)
 Vans can collect working bikes from a garage (passed as an argument). Only takes fixed bikes and removes them from the garage's workshop and adds them to the van's inventory. If a garage only has broken bikes an error will be raised.
 
-Unimplemented features:
-- Distributing the fixed bikes back to a DockingStation instance (#distribute_bikes)
+#### .distribute_bikes(garage)
+Allows vans to distribute working bikes back to DockingStations by passing the instance of the DockingStation as an argument.
+
 
 ### Garage
 

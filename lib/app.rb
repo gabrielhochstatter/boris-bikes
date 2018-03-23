@@ -1,4 +1,6 @@
-require 'bikecontainer'
+require_relative 'bikecontainer'
+require_relative 'van'
+require_relative 'garage'
 
 class DockingStation
 
@@ -6,9 +8,10 @@ class DockingStation
     DEFAULT_CAPACITY = 20
     attr_accessor :bikerack, :capacity
     #attr_reader :DEFAULT_CAPACITY
-    def initialize(bike = nil, capacity = DEFAULT_CAPACITY)
+    def initialize(capacity = DEFAULT_CAPACITY)
+      raise "Capacity cannot be negative!!" if capacity < 0
       @bikerack = container
-      deposit_bike(bike) if bike
+      #deposit_bike(bike) if bike
       @capacity = capacity
     end
 

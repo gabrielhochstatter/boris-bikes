@@ -1,5 +1,5 @@
-require "app"
-require "bikecontainer"
+#require "app"
+#require "bikecontainer"
 
 class Van
 

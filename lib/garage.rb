@@ -1,4 +1,4 @@
-require "bikecontainer"
+#require "bikecontainer"
 
 class Garage
 
