@@ -24,7 +24,8 @@ class Van
   end
 
   def distribute_bikes(dockingstation)
-
+    @inventory.each { |bike| dockingstation.bikerack << bike if bike.working? }
+    @inventory.delete_if { |bike| bike.working? }
   end
 
   private
@@ -51,8 +52,9 @@ Van methods/actions
     raises error if all bikes in garage are broken DONE
 
 
-distribute fixed bikes => distribute_bikes(DockingStation to deliver to)
-    transfer fixed bikes only to DockingStation
-    keep any broken bikes in the Van
+[FINISHED] distribute fixed bikes => distribute_bikes(DockingStation to deliver to)
+    remove fixed bikes from the van DONE
+    transfer fixed bikes only to DockingStation DONE
+    keep any broken bikes in the Van DONE
 
 =end
