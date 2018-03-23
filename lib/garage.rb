@@ -1,8 +1,11 @@
+require "bikecontainer"
+
 class Garage
 
+  include BikeContainer
   attr_accessor :workshop
   def initialize
-    @workshop = []
+    @workshop = container
   end
 
   def fix_bikes

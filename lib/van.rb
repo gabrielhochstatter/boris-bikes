@@ -1,10 +1,12 @@
 require "app"
+require "bikecontainer"
 
 class Van
 
+  include BikeContainer
   attr_accessor :inventory
   def initialize
-    @inventory = []
+    @inventory = container
   end
 
   def take_bikes(dockingstation)
