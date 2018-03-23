@@ -1,4 +1,4 @@
-#require "app"
+require "app"
 
 class Van
 
@@ -18,13 +18,16 @@ class Van
   end
 
   def collect_bikes(garage)
-
+    raise "All bikes are broken! Cannot pick up bikes!" if !garage.workshop.any? { |bike| bike.working? }
+    garage.workshop.each { |bike| @inventory << bike if bike.working? }
+    garage.workshop.delete_if { |bike| bike.working? }
   end
 
   def distribute_bikes(dockingstation)
 
   end
 
+  private
 
 end
 
@@ -42,9 +45,11 @@ Van methods/actions
     remove the bikes from Van DONE
     add them to Garage's workshop DONE
 
-collect fixed bikes => collect_bikes(Garage to collect from)
-    add only the fixed bikes to Van's inventory
-    remove the fixed bikes from Garage
+[FINISHED] collect fixed bikes => collect_bikes(Garage to collect from)
+    remove the fixed bikes from Garage DONE
+    add only the fixed bikes to Van's inventory DONE
+    raises error if all bikes in garage are broken DONE
+
 
 distribute fixed bikes => distribute_bikes(DockingStation to deliver to)
     transfer fixed bikes only to DockingStation

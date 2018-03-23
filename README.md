@@ -20,12 +20,16 @@ Users can report the bike as broken by calling the #report_broken method on the 
 
 ### Van
 
+#### .take_bikes(dockingstation)
 Can pick up broken bikes from any DockingStation instance using the #take_bikes method while passing the DockingStation as an argument. #take_bikes will only remove broken bikes from the station.
 
+#### .deliver_bikes(garage)
 Bikes can be delivered to a Garage instance using the #deliver_bikes method passing the Garage instance as an argument. Bikes will be placed into the Garage's workshop and removed from the Van's inventory.
 
+#### .collect_bikes(garage)
+Vans can collect working bikes from a garage (passed as an argument). Only takes fixed bikes and removes them from the garage's workshop and adds them to the van's inventory. If a garage only has broken bikes an error will be raised.
+
 Unimplemented features:
-- Collecting fixed bikes from a Garage instance (#collect_bikes)
 - Distributing the fixed bikes back to a DockingStation instance (#distribute_bikes)
 
 ### Garage

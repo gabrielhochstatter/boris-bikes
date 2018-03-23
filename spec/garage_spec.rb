@@ -19,7 +19,7 @@ describe Garage do
 
     it "sets the first bike's working? state to true" do
       garage.fix_bikes
-      expect(garage.workshop[0].working?).to be
+      expect(garage.workshop[0].working?).to be 
     end
 
     it "sets all the bikes in the workshop to be working" do
